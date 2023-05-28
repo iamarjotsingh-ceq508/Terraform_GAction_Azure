@@ -1,0 +1,8 @@
+resource_group_name     = "amarjot-rg-terraform-web-sql-db"
+resource_group_location = "westeurope"
+app_service_plan_name   = "appserviceplan-web-amarjot"
+app_service_name        = "terraform-web-amarjot"
+sql_server_name         = "terraform-sqlserver-amarjot"
+sql_database_name       = "ProductsDB"
+sql_admin_login         = "amar01"
+sql_admin_password      = "@Amarjot123456789!"
