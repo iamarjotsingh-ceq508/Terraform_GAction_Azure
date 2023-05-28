@@ -15,7 +15,7 @@ env:
   CONTAINER_NAME: amarjot_tfstate
   BLOB_NAME: amarjot_terraform.tfstate
   
-  WORKING_DIRECTORY: 05_Web_Sql_database
+  WORKING_DIRECTORY: tf-infra
   
 jobs:
   
@@ -108,13 +108,11 @@ jobs:
         ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      if: github.event_name == 'pull_request' # 'push' # 
       run: |
         terraform plan  
        
     # On push to main, build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       env:
         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
